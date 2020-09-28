@@ -178,6 +178,29 @@ class CountingLabel: UILabel
         }
     }
     
+//     /// this function updates the text from the Label
+//     fileprivate func updateText(value: Float)
+//     {
+//         let currencySign = UserDefaults.standard.getCurrencySign()
+//         let currencyFormatter = NumberFormatter()
+//         currencyFormatter.groupingSize = 3
+//         currencyFormatter.groupingSeparator = "."
+//         currencyFormatter.decimalSeparator = ","
+//         currencyFormatter.usesGroupingSeparator = true
+//         currencyFormatter.numberStyle = .decimal
+//         currencyFormatter.maximumFractionDigits = 2
+//         currencyFormatter.minimumFractionDigits = 2
+        
+//         if currencySign == UserDefaults.UserDefaultsKeys.pondSign.rawValue {
+//             currencyFormatter.groupingSeparator = ","
+//             currencyFormatter.decimalSeparator = "."
+//         }
+        
+//         if let formattedGrossAmount = currencyFormatter.string(from: value as NSNumber) {
+//             self.text = "\(formattedGrossAmount)\(currencySign)"
+//         }
+//     }    
+    
     /// this function updates the counter value
     fileprivate func updateCounter(counterValue: Float) -> Float
     {
