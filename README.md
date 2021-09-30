@@ -1,4 +1,5 @@
-# Counting-UILabel
-Counting UILabel for Int, Double, Float and HEX values
+# Counting-UILabel UIKit
 
-Also a commented "updateText" function to make a counting label for currecy labels 
+Counting UILabel for Int, Double, Float and HEX values!
+
+Also a commented "updateText" function to make a counting label for currecy labels
