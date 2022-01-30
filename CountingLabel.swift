@@ -1,36 +1,26 @@
-//
-//  CountingLabel.swift
-//  ETC
-//
-//  Created by Giordano Menegazzi on 18/03/2019.
-//  Copyright © 2019 Autodidact BV. All rights reserved.
-//
-
 import UIKit
 
 // MARK: - Counting Label class
 /// this class let's the Label count up or down in an animation
-class CountingLabel: UILabel
-{
+class CountingLabel: UILabel {
     // MARK: - Global File Variables
     /// variables for the start and end values
-    fileprivate var startValue: Float = 0.0
-    fileprivate var endValue: Float = 0.0
+    private var startValue: Float = 0.0
+    private var endValue: Float = 0.0
     
     /// variables for the time calculations
-    fileprivate var progress: TimeInterval!
-    fileprivate var duration: TimeInterval!
-    fileprivate var lastUpdate: TimeInterval!
-    fileprivate var timer: Timer?
+    private var progress: TimeInterval!
+    private var duration: TimeInterval!
+    private var lastUpdate: TimeInterval!
+    private var timer: Timer?
     
     /// variables for the counter calculations
-    fileprivate let counterVelocity: Float = 3.0
-    fileprivate var animationType: AnimationType!
-    fileprivate var counterType: CounterType!
+    private let counterVelocity: Float = 3.0
+    private var animationType: AnimationType!
+    private var counterType: CounterType!
     
     /// this variable holds the current counter value
-    fileprivate var currentCounterValue: Float
-    {
+    private var currentCounterValue: Float {
         if progress >= duration {
             return endValue
         }
@@ -91,8 +81,7 @@ class CountingLabel: UILabel
     
     // MARK: - Setup Function
     /// this function sets the button properties
-    fileprivate func setupProperties()
-    {
+    private func setupProperties() {
         setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         textColor = themeColors.mainTextColor
         numberOfLines = 0
@@ -105,8 +94,7 @@ class CountingLabel: UILabel
     
     // MARK: - Main Setup Function
     /// this function can be called in other classes and initializes the countingLabel
-    func count(startValue: Float, endValue: Float, duration: TimeInterval, animationType: AnimationType, counterType: CounterType, textAlignment: TextAlignment, font: String, fontSize: CGFloat)
-    {
+    func count(startValue: Float, endValue: Float, duration: TimeInterval, animationType: AnimationType, counterType: CounterType, textAlignment: TextAlignment, font: String, fontSize: CGFloat) {
         self.startValue = startValue
         self.endValue = endValue
         self.duration = duration
@@ -134,8 +122,7 @@ class CountingLabel: UILabel
     
     // MARK: - Counting / Helper Functions
     /// this function sets the textAlignment
-    fileprivate func setTextAlignment(alignment: TextAlignment)
-    {
+    private func setTextAlignment(alignment: TextAlignment) {
         switch alignment {
         case .Left:
             self.textAlignment = .left
@@ -147,8 +134,7 @@ class CountingLabel: UILabel
     }
     
     /// this function updates the time values
-    @objc fileprivate func updateValue()
-    {
+    @objc private func updateValue() {
         let now = Date.timeIntervalSinceReferenceDate
         progress = progress + (now - lastUpdate)
         lastUpdate = now
@@ -157,13 +143,11 @@ class CountingLabel: UILabel
             invalidateTimer()
             progress = duration
         }
-        
         updateText(value: currentCounterValue)
     }
     
     /// this function updates the text from the Label
-    fileprivate func updateText(value: Float)
-    {
+    private func updateText(value: Float) {
         guard let counterType = counterType else { return }
         
         switch counterType {
@@ -179,8 +163,7 @@ class CountingLabel: UILabel
     }
     
 //     /// this function updates the text from the Label
-//     fileprivate func updateText(value: Float)
-//     {
+//     private func updateText(value: Float) {
 //         let currencySign = UserDefaults.standard.getCurrencySign()
 //         let currencyFormatter = NumberFormatter()
 //         currencyFormatter.groupingSize = 3
@@ -202,8 +185,7 @@ class CountingLabel: UILabel
 //     }    
     
     /// this function updates the counter value
-    fileprivate func updateCounter(counterValue: Float) -> Float
-    {
+    private func updateCounter(counterValue: Float) -> Float {
         guard let animationType = animationType else { return 0}
         
         switch animationType {
@@ -217,7 +199,7 @@ class CountingLabel: UILabel
     }
     
     /// this function invalidates the timer
-    fileprivate func invalidateTimer() {
+    private func invalidateTimer() {
         timer?.invalidate()
         timer = nil
     }
